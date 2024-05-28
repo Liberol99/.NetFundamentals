@@ -1,0 +1,29 @@
+﻿@page "/"
+@using BusinessLayer.Abstract;
+@using BusinessLayer.Concrete;
+@using EntityLayer.Concrete;
+
+@inject IEmployeeService employeeManager
+
+<PageTitle>Index</PageTitle>
+
+@if (employees != null && employees.Count()>0)
+{
+    foreach (var employee in employees)
+    {
+        <div class="d-flex" style="gap:10px">
+            <span>@employee.Name</span>
+            <span>@employee.EMail</span>
+            <span>@employee.Title</span>
+        </div>
+    }
+}
+
+@code{
+    public IEnumerable<Employee> employees = new List<Employee>();
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        employees = employeeManager.GetAll();
+    }
+}

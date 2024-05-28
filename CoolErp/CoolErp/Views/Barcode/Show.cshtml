@@ -1,0 +1,16 @@
+﻿@model List<EntityLayer.Concrete.Supplier>
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+@foreach (var item in Model)
+{ <div class="col-md-4">
+    <div class="alert" style="background-color:#4272D7" role="alert">
+                  <a class="text-white" asp-controller="Barcode" asp-action="Index" asp-route-id="@item.SupplierId">@item.CompanyName</a>
+
+    </div>
+     </div>
+    
+}
+</div>

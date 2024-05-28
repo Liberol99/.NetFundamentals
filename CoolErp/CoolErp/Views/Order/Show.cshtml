@@ -1,0 +1,61 @@
+﻿@model List<EntityLayer.Concrete.Order>
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-md-12  d-flex flex-row align-items-center">
+                                    <h2 class="title-1 mb-2 mr-3 ml-2">İş Kartı Listesi</h2>
+                                    <a class="btn btn-success mb-2" href="/Order/Add">İş Ekle</a>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>Company Name</th>
+                                                <th>Employee Name</th>
+                                                <th>Shipper Name</th>
+                                                <th>Order Date</th>
+                                                <th>Required Date</th>
+                                                <th>Shipped Date</th>
+                                                <th>Ship Via</th>
+                                                <th>Ship Name</th>
+                                                <th>Ship Address</th>
+                                                <th>Ship City</th>
+                                                <th>Ship Region</th>
+                                                <th>Ship Postal Code</th>
+                                                <th>Ship Postal Country</th>
+                                                <th class="text-right">İş Güncelle</th>
+                                                <th class="text-right">İş Sil</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(var item in Model){
+                                            <tr>
+                                                <td>@item.Customer.CompanyName</td>
+                                                <td>@item.Employee.FirstName</td>   
+                                                <td>@item.Shipper.CompanyName</td>  
+                                                <td>@item.OrderDate</td>  
+                                                <td>@item.RequiredDate</td>  
+                                                <td>@item.ShippedDate</td>  
+                                                <td>@item.ShipVia</td>  
+                                                <td>@item.ShipName</td>  
+                                                <td>@item.ShipAddress</td>  
+                                                <td>@item.ShipCity</td>  
+                                                <td>@item.ShipRegion</td>  
+                                                <td>@item.ShipPostalCode</td>  
+                                                <td>@item.ShipCountry</td>  
+                                                <td class="text-right"><a class="btn btn-warning" href="/Order/Update/@item.OrderId">Güncelle</a></td>
+                                                <td class="text-right"><a class="btn btn-danger" href="/Order/Delete/@item.OrderId">Sil</a></td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>

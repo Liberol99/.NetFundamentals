@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "OMDjw9++aa4PfRX5eZeuZWJYUakNzLYo/Jdcvv0kqvYZYYRU+uVb4lI/LyULobiGlVI2dd7aZeRKMDH+3dM7TA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Orkan\\Documents\\Visual Studio 2022\\Projects\\BlazorExcelDataReader\\BlazorExcelDataReader\\BlazorExcelDataReader.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Orkan\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
+    "C:\\Users\\Orkan\\.nuget\\packages\\exceldatareader.dataset\\3.6.0\\exceldatareader.dataset.3.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}

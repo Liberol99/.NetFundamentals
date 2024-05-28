@@ -1,0 +1,18 @@
+﻿@model List<Category>
+
+@if (Model != null && Model.Count() > 0)
+{
+    <table class="table">
+        <tr>
+            <th>Adı</th>
+            <th>Açıklaması</th>
+        </tr>    
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryName</td>
+            <td>@item.Description</td>
+        </tr>
+    }
+    </table>
+}

@@ -1,0 +1,21 @@
+﻿@model Employee
+
+
+<form asp-controller="Login" asp-action="Login" method="post">
+    <h1>Login</h1>
+    <input class="form-control" type="email" placeholder="Email" asp-for="Email" />
+    <input class="form-control" type="password" placeholder="Password" asp-for="Password" />
+    <label>
+        <input type="checkbox" asp-for="KeepLoggedIn" />
+        Beni Hatırla
+    </label>
+    <br />
+    <button class="btn btn-dark" type="submit">Login</button>
+
+    @if (ViewData["ValidateMessage"] != null)
+    {
+        <br />
+        <br />
+        <label>@ViewData["ValidateMessage"]</label>
+    }
+</form>

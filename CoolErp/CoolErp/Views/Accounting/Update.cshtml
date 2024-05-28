@@ -1,0 +1,16 @@
+﻿@model CoolErp.Controllers.AccountingController.Accounting
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="jumbotron" style="background-color:#E5E5E5">
+<form asp-controller="Accounting" asp-action="Update" method="post">
+    <input class="form-control" type="hidden" asp-for="AccountingId"/>
+    <input class="form-control mt-2" type="text" asp-for="HesapAdi" name="HesapAdi" />
+    <input class="form-control mt-2" type="text" asp-for="Borc" name="Borc" />
+    <input class="form-control mt-2" type="text" asp-for="Alacak" name="Alacak" />
+    <button class="btn btn-warning mt-2">Güncelle</button>
+</form>
+</div>

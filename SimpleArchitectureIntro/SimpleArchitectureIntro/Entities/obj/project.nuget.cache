@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "IF7nwS+TutJsjP+2zIT8vWzY/Jge9TVimernuWTqVBWoNanSzem9hx3OUwxOljAZwI+oyD1ptFhw4+jDwhPeKw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Orkan\\Documents\\Visual Studio 2022\\Projects\\SimpleArchitectureIntro\\SimpleArchitectureIntro\\Entities\\Entities.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Orkan\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\Orkan\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Orkan\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

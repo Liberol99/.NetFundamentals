@@ -1,0 +1,52 @@
+﻿@model (List<EntityLayer.Concrete.Order>,List<EntityLayer.Concrete.Product>)
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 class="ml-2">İş Ekle</h1>
+
+<form asp-controller="OrderDetail" asp-action="Add" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>İş Detayı</strong>
+                                        <small> Form</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-group">
+                                         <select class="form-control" name="OrderId">
+                                             <option selected>Kargo Firmasını Seçiniz</option>
+                                             @foreach (var item in Model.Item1)
+                                             {
+                                                 <option value="@item.OrderId">
+                                                     @item.ShipName
+                                                 </option>
+                                             }
+                                         </select>
+                                         </div>
+                                         <div class="form-group">
+                                         <select class="form-control" name="ProductId">
+                                             <option selected>Ürün Adını Seçiniz</option>
+                                             @foreach (var item in Model.Item2)
+                                             {
+                                                 <option value="@item.ProductId">
+                                                     @item.ProductName
+                                                 </option>
+                                             }
+                                         </select>
+                                         </div>
+                                         <div class="form-group">
+                                            <input name="UnitPrice" type="text" placeholder="İş Fiyatını Giriniz" class="form-control">
+                                         </div>
+                                         <div class="form-group">
+                                            <input name="Quantity" type="text" placeholder="İş Miktarını Giriniz" class="form-control">
+                                         </div>
+                                         <div class="form-group">
+                                            <input name="Discount" type="text" placeholder="İş İndirimini Giriniz" class="form-control">
+                                         </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-success ml-2">Ekle</button>
+                                </form>

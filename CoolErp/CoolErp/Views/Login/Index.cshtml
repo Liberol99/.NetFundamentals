@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="jumbotron" style="background-color:#E5E5E5">
+
+
+<div class="login-form">
+                            <form asp-controller="Login" asp-action="Index" method="post">
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input class="au-input au-input--full" type="email" name="Mail" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input class="au-input au-input--full" type="password" name="Password" placeholder="Password">
+                                </div>
+                                
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Oturum Aç</button>
+                                
+                            </form>
+                            <div class="register-link">
+                                <p>
+                                    Hesabınız Yok Mu ?
+                                    <a class="au-btn au-btn--block au-btn--green m-b-20" href="Account/Register"><i style="color:white">Kayıt Ol</i></a>
+                                </p>
+                            </div>
+                        </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@page "/Child"
+
+<button class="btn btn-outline-danger" @onclick=@(async () => {await SayHi.InvokeAsync("SENTEZ YAZILIM");})>Child Click</button>
+
+@code {
+
+    [Parameter] public EventCallback<string> SayHi { get; set; }
+
+    public class Employee
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Surname { get; set; } = string.Empty;
+        public short Age { get; set; } = 0;
+    }
+
+    public Employee[]? employees = null;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        employees = new Employee[]
+        {
+            new Employee(){Name="Orkan",Surname="Köroğlu",Age=24},
+            new Employee(){Name="Cem",Surname="İlyün",Age=24},
+            new Employee(){Name="Ziya",Surname="Yıldız",Age=25},
+            new Employee(){Name="Oğuzhan",Surname="Eroğlu",Age=24},
+            new Employee(){Name="Eray",Surname="Özer",Age=27}
+        };
+    }
+
+}

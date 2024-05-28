@@ -1,0 +1,36 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<CoolBlog.Models.Blog>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row justify-content-center mt-5">
+<div class="col-md-9">
+        
+<a class="btn btn-success mb-2" asp-area="Admin" asp-controller="AdminBlog" asp-action="Add">Blog Ekle</a>
+<a class="btn btn-secondary mb-2"  href="/Home/Index">Sentez Home</a>
+<table class="table">
+    <tr>
+        <th>BlogId</th>
+        <th>BlogTitle</th>
+        <th>BlogContent</th>
+        <th>BlogImage</th>
+        <th>Blog Sil</th>
+        <th>Blog Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+   {
+       <tr>
+           <td>@item.BlogId</td>
+           <td>@item.BlogTitle</td>
+           <td>@item.BlogContent</td>
+           <td><img width="100" height="100" src="@item.BlogImage"></img></td>
+           <td><a class="btn btn-danger" asp-area="Admin" asp-controller="AdminBlog" asp-action="Delete" asp-route-id="@item.BlogId">Sil</a></td>
+           <td><a class="btn btn-primary" asp-area="Admin" asp-controller="AdminBlog" asp-action="Update" asp-route-id="@item.BlogId">Güncelle</a></td>
+       </tr>
+   }
+</table>
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
+</div>
+</div>

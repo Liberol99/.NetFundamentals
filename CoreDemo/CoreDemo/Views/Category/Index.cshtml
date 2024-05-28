@@ -1,0 +1,39 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CoreDemo.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <table class="table table-striped">
+        <tr>
+            <th>CategoryId</th>
+            <th>CategoryName</th>
+            <th>CategoryStatus</th>
+            <th>CategoryDescription</th>
+            <th>Delete</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryId</td>
+                <td>@item.CategoryName</td>
+                <td>@item.CategoryStatus</td>
+                <td><a href="#" class="btn btn-warning">Description</a></td>
+                <td><a href="#" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿@page "/"
+@using System.Linq
+
+<h1>Entities</h1>
+
+<button class="btn btn-primary" @onclick="GoToPreviousPage" disabled="@IsFirstPage">Previous</button>
+<button class="btn btn-primary" @onclick="GoToNextPage" disabled="@IsLastPage">Next</button>
+<button class="btn btn-primary" @onclick=@(()=>{GoToSpecificPage(2);})>Go to Page 2</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entity in CurrentPageEntities)
+        {
+            <tr>
+                <td>@entity.Id</td>
+                <td>@entity.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    // Örnek veri oluştur
+    List<Entity> entities = new List<Entity>()
+    {
+        new Entity(){Id=1,Name="Fransa"},
+        new Entity(){Id=2,Name="Almanya"},
+        new Entity(){Id=3,Name="İngiltere"},
+        new Entity(){Id=4,Name="İtalya"},
+        new Entity(){Id=5,Name="İspanya"},
+        new Entity(){Id=6,Name="Arjantin"},
+        new Entity(){Id=7,Name="Brezilya"},
+        new Entity(){Id=8,Name="Türkiye"}
+    };
+
+    // Sayfa boyutu
+    int PageSize = 3;
+
+    // Mevcut sayfa numarası
+    int CurrentPageNumber = 1;
+
+    // Mevcut sayfadaki öğeler
+    IEnumerable<Entity> CurrentPageEntities => entities.Skip((CurrentPageNumber - 1) * PageSize).Take(PageSize);
+
+    // İlk sayfa kontrolü
+    bool IsFirstPage => CurrentPageNumber == 1;
+
+    // Son sayfa kontrolü
+    bool IsLastPage => CurrentPageNumber * PageSize >= entities.Count;
+
+    // Önceki sayfaya git
+    void GoToPreviousPage()
+    {
+        if (!IsFirstPage)
+        {
+            CurrentPageNumber--;
+        }
+    }
+
+    // Sonraki sayfaya git
+    void GoToNextPage()
+    {
+        if (!IsLastPage)
+        {
+            CurrentPageNumber++;
+        }
+    }
+
+    // Belirli bir sayfaya git
+    void GoToSpecificPage(int pageNumber)
+    {
+        if (pageNumber >= 1 && pageNumber <= TotalPages)
+        {
+            CurrentPageNumber = pageNumber;
+        }
+    }
+
+    // Toplam sayfa sayısı
+    int TotalPages => (int)Math.Ceiling((double)entities.Count / PageSize);
+
+    public class Entity
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+}

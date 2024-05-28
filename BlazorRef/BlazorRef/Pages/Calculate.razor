@@ -1,0 +1,12 @@
+﻿<h3>Calculate</h3>
+<h4>Toplam : @Total</h4>
+
+@code {
+    public decimal Total { get; set; }
+
+    public void Topla(decimal a, decimal b)
+    {
+        Total = a + b;
+        StateHasChanged();
+    }
+}

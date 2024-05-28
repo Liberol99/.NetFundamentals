@@ -1,0 +1,85 @@
+﻿@model (List<EntityLayer.Concrete.Order>,List<EntityLayer.Concrete.Customer>,List<EntityLayer.Concrete.Employee>,List<EntityLayer.Concrete.Shipper>)
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1 class="ml-2">İş Ekle</h1>
+
+<form asp-controller="Order" asp-action="Add" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>İş</strong>
+                                        <small> Form</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-group">
+                                         <select class="form-control" name="CustomerId">
+                                             <option selected>Müşteri Seçiniz</option>
+                                             @foreach (var item in Model.Item2)
+                                             {
+                                                 <option value="@item.CustomerId">
+                                                     @item.CompanyName
+                                                 </option>
+                                             }
+                                         </select>
+                                         </div>
+                                         <div class="form-group">
+                                         <select class="form-control" name="EmployeeId">
+                                             <option selected>Çalışan Seçiniz</option>
+                                             @foreach (var item in Model.Item3)
+                                             {
+                                                 <option value="@item.EmployeeId">
+                                                     @item.FirstName
+                                                 </option>
+                                             }
+                                         </select>
+                                         </div>
+                                         <div class="form-group">
+                                         <select class="form-control" name="ShipperId">
+                                             <option selected>Kargo Seçiniz</option>
+                                             @foreach (var item in Model.Item4)
+                                             {
+                                                 <option value="@item.ShipperId">
+                                                     @item.CompanyName
+                                                 </option>
+                                             }
+                                         </select>
+                                         </div>
+                                         <div class="form-group">
+                                            <input name="OrderDate" type="datetime" placeholder="İş Tarihini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="RequiredDate" type="datetime" placeholder="Teslimat Tarihini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="ShippedDate" type="datetime" placeholder="Sevk Tarihin Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="ShipVia" type="text" placeholder="Sevk Kodunu Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="ShipName" type="text" placeholder="Tedarikçi Adını Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="ShipAddress" class="form-control" placeholder="Tedarikçi Adresini Giriniz"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="ShipCity" type="text" placeholder="Tedarikçi Şehrini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="ShipRegion" type="text" placeholder="Tedarikçi Bölgesini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="ShipPostalCode" type="text" placeholder="Tedarikçi Posta Kodunu Giriniz" class="form-control">
+                                        </div>  
+                                        <div class="form-group">
+                                            <input name="ShipCountry" type="text" placeholder="Tedarikçi Ülkesini Giriniz" class="form-control">
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+                                <button class="btn btn-success ml-2">Ekle</button>
+                                </form>

@@ -1,0 +1,35 @@
+﻿@model List<EntityLayer.Concrete.Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-md-12  d-flex flex-row align-items-center">
+                                    <h2 class="title-1 mb-2 mr-3 ml-2">Ürün Seçme Listesi</h2>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>Product Name</th>
+                                                <th>#</th>
+                                                <th class="text-right">Ürün Seç</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(var item in Model){
+                                            <tr>
+                                                <td>@item.ProductName</td>
+                                                <td><img src="@item.Category.Picture" width="200px" height="200px"/></td>
+                                                <td class="text-right"><a class="btn btn-primary" href="/Finance/Calculate/@item.ProductId">Seç</a></td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>

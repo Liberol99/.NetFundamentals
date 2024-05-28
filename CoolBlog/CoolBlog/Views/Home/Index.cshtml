@@ -1,0 +1,84 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Blog>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+            @await Component.InvokeAsync("ShowNews")
+            
+          </div>
+        </div>
+        <div class="row">
+            @await Component.InvokeAsync("ShowNewsBottom")
+        </div>
+      </div>
+
+
+    </section>
+    <!-- END section -->
+
+    <section class="site-section py-sm">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="mb-4">Genel Haberler</h2>
+          </div>
+        </div>
+        <div class="row blog-entries">
+          <div class="col-md-12 col-lg-8 main-content">
+            <div class="row">
+              @foreach (var item in Model)
+             {
+                 <div class="col-md-6">
+                <a href="Category/Index/@item.BlogId" class="blog-entry element-animate" data-animate-effect="fadeIn">
+                  <img src="@item.BlogImage" alt="Image placeholder">
+                  <div class="blog-content-body">
+                    <div class="post-meta">
+                      <span class="category">@item.Category.CategoryName</span>
+                      <span class="mr-2">@item.BlogCreateDate.ToString().Substring(0,10) </span> &bullet;
+                      <span class="ml-2"><span class="fa fa-comments"></span> @item.BlogContent.Count()</span>
+                    </div>
+                    <h2>@item.BlogTitle</h2>
+                  </div>
+                </a>
+              </div>
+             }
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                  @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
+              </div>
+            </div>
+
+
+            <div class="row mb-5 mt-5">
+
+              <div class="col-md-12">
+                <h2 class="mb-4">Daha Fazla Post</h2>
+              </div>
+                 @await Component.InvokeAsync("ShowMoreBlogs")
+            </div>
+
+            
+
+          </div>
+
+          <!-- END main-content -->
+
+          <div class="col-md-12 col-lg-4 sidebar">
+            
+            <!-- END sidebar-box -->
+            
+            <!-- END sidebar-box -->  
+            @await Component.InvokeAsync("SideBarWriter")
+            <!-- END sidebar-box -->
+
+            
+            <!-- END sidebar-box -->
+
+            
+          </div>

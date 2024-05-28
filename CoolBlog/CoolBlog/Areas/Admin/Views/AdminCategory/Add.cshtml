@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-9">
+        <form asp-area="Admin" asp-controller="AdminCategory" asp-action="Add" method="post" >
+            <input class="form-control" type="text"  name="CategoryName" placeholder="Kategori"/>
+            <input class="form-control mt-2" type="text"  name="CategoryDescription" placeholder="Açıklama"/>
+            <button class="btn btn-success mt-2">Ekle</button>
+        </form>
+    </div>
+</div>

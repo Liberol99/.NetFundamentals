@@ -1,0 +1,62 @@
+﻿@model EntityLayer.Concrete.Product
+@{
+    ViewData["Title"] = "ShowWaybill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Random random = new Random();
+    int number = random.Next(25646, 56515);
+}
+
+<section class="h-100 h-custom" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card border-top border-bottom border-3" style="border-color: #4272D7 !important;">
+          <div class="card-body p-5">
+
+            <p class="lead fw-bold mb-5" style="color: #4272D7;">Sentez Yazılım</p>
+
+            <div class="row">
+              <div class="col mb-3">
+                <p class="small text-muted mb-1">Date</p>
+                <p>@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year </p>
+              </div>
+              <div class="col mb-3">
+                <p class="small text-muted mb-1">Order No.</p>
+                <p>@number</p>
+              </div>
+            </div>
+
+            <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
+              <div class="row">
+                <div class="col-md-8 col-lg-9">
+                  <p>@Model.ProductName</p>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                  <p>@Model.UnitPrice</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-lg-9">
+                  <p class="mb-0">KDV</p>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                  <p class="mb-0">+%18 KDV</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row my-4">
+              <div class="col-md-6 offset-md-8 col-lg-6 offset-lg-9">
+                <p class="lead fw-bold mb-0" style="color: #4272D7;">@ViewBag.kdv</p>
+              </div>
+            </div>
+
+            <p class="lead fw-bold mb-4 pb-2" style="color: #4272D7;">Bizimle Çalıştığınız İçin Teşekkür Ederiz</p>
+            <p><a asp-controller="Barcode" asp-action="Show">Barkod Çıkar</a></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

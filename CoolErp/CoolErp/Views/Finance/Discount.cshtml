@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Discount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background-color:#E5E5E5">
+
+<h2 class="mb-2">İskonto Hesaplama</h2>
+
+<form asp-controller="Finance" asp-action="Discount" method="get">
+    <input class="form-control" type="text" name="sayi1" id="sayi1" placeholder="Liste Fiyatı" />
+    <input class="form-control mt-2" type="text" name="sayi2" id="sayi2" placeholder="İndirim Oranı"/>
+    <button class="btn btn-danger mt-2">Hesapla</button>
+</form>
+
+<h2 class="mt-2">İndirimli Fiyat: @ViewBag.sonuc</h2>
+</div>

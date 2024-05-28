@@ -1,0 +1,20 @@
+﻿@model CoolBlog.Models.Blog
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        <a asp-area="Admin" asp-controller="AdminBlog" asp-action="Index" class="btn btn-success mt-2 mb-2">Geri Dön</a>
+        <form asp-area="Admin" asp-controller="AdminBlog" asp-action="Update" method="post" >
+            <input class="form-control" type="hidden" name="BlogId" asp-for="BlogId"/>
+            <input class="form-control" type="text"  name="BlogTitle" asp-for="BlogTitle"/>
+            <textarea class="form-control"   name="BlogContent" asp-for="BlogContent"></textarea>
+            <input class="form-control" type="text"  name="BlogImage" asp-for="BlogImage"/>
+            <input class="form-control" type="hidden"  name="CategoryId" asp-for="CategoryId"/>
+            <input class="form-control" type="hidden"  name="WriterId" asp-for="WriterId"/>
+            <button class="btn btn-primary mt-2">Güncelle</button>
+        </form>
+    </div>
+</div>

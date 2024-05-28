@@ -1,0 +1,88 @@
+﻿@page "/"
+@using Newtonsoft.Json;
+
+@inject IJSRuntime JSRuntime
+
+<button class="btn btn-primary" @onclick=@(async ()=>{await showMessage();})>Göster</button>
+<button class="btn btn-success" @onclick=@(async ()=>{await setLocalStorage("userData",dRow);})>Cache Kaydet</button>
+<button class="btn btn-warning" @onclick=@(async ()=>{await getLocalStorage("userData");})>Cache Getir</button>
+<button class="btn btn-danger" @onclick=@(async ()=>{await removeLocalStorage("userData");})>Cache Sil</button>
+<button class="btn btn-secondary" @onclick=@(async ()=>{dRow.Clear();})>Yenile</button>
+
+@if (dRow != null && dRow.Count() > 0 && showTable)
+{
+    <div class="row mt-2">
+        <div class="col-lg-4 mr-auto">
+            <table class="table table-striped">
+                <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                </tr>
+                <tr>
+                    @if (dRow != null && dRow.ContainsKey("firstName") && dRow["firstName"] != null)
+                    {
+                        <td>@dRow["firstName"]</td>
+                    }
+                    @if (dRow != null && dRow.ContainsKey("lastName") && dRow["lastName"] != null)
+                    {
+                        <td>@dRow["lastName"]</td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>
+}
+@code {
+    public Dictionary<string, object> dRow = new Dictionary<string, object>();
+    public bool showTable = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+
+    public void setData()
+    {
+        this.dRow = new Dictionary<string, object>();
+        this.dRow.Add("firstName", "Orkan");
+        this.dRow.Add("lastName", "Koroglu");
+    }
+
+    public async Task showMessage()
+    {
+        await JSRuntime.InvokeVoidAsync("showMessage");
+    }
+
+    public async Task setLocalStorage(string key, Dictionary<string, object> dRow)
+    {
+        setData();
+        if (dRow != null && dRow.Count() > 0 && !string.IsNullOrEmpty(key))
+        {
+            string jRow = JsonConvert.SerializeObject(dRow);
+            await JSRuntime.InvokeVoidAsync("setLocalStorage", key, jRow);
+        }
+    }
+
+    public async Task getLocalStorage(string key)
+    {
+        if (!string.IsNullOrEmpty(key))
+        {
+            string jRow = await JSRuntime.InvokeAsync<string>("getLocalStorage", key);
+            if (!string.IsNullOrEmpty(jRow))
+            {
+                this.dRow.Clear();
+                this.dRow = JsonConvert.DeserializeObject<Dictionary<string, object>>(jRow);
+                showTable = true;
+                await InvokeAsync(StateHasChanged);
+            }
+        }
+    }
+
+    public async Task removeLocalStorage(string key)
+    {
+        if (!string.IsNullOrEmpty(key))
+        {
+            await JSRuntime.InvokeVoidAsync("removeLocalStorage", key);
+        }
+    }
+}

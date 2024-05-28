@@ -1,0 +1,169 @@
+﻿@page "/"
+@using Newtonsoft.Json;
+@using System.Text;
+
+@checkoutFormContent
+
+@code {
+
+    public class BasketItem
+    {
+        public string id { get; set; }
+        public string price { get; set; }
+        public string name { get; set; }
+        public string category1 { get; set; }
+        public string itemType { get; set; }
+    }
+
+    public class BillingAddress
+    {
+        public string address { get; set; }
+        public string contactName { get; set; }
+        public string city { get; set; }
+        public string country { get; set; }
+    }
+
+    public class Buyer
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+        public string surname { get; set; }
+        public string identityNumber { get; set; }
+        public string email { get; set; }
+        public string gsmNumber { get; set; }
+        public string registrationAddress { get; set; }
+        public string city { get; set; }
+        public string country { get; set; }
+        public string ip { get; set; }
+    }
+
+    public class ShippingAddress
+    {
+        public string address { get; set; }
+        public string contactName { get; set; }
+        public string city { get; set; }
+        public string country { get; set; }
+    }
+
+    public class CFRequest
+    {
+        public string locale { get; set; }
+        public string conversationId { get; set; }
+        public string price { get; set; }
+        public string basketId { get; set; }
+        public string paymentGroup { get; set; }
+        public Buyer buyer { get; set; }
+        public ShippingAddress shippingAddress { get; set; }
+        public BillingAddress billingAddress { get; set; }
+        public BasketItem[] basketItems { get; set; }
+        public string callbackUrl { get; set; }
+        public string currency { get; set; }
+        public string paidPrice { get; set; }
+        public string paymentSource { get; set; }
+        public int[] enabledInstallments { get; set; }
+    }
+
+    public class CFResponse
+    {
+        public string status { get; set; }
+        public string locale { get; set; }
+        public long systemTime { get; set; }
+        public string conversationId { get; set; }
+        public string token { get; set; }
+        public string checkoutFormContent { get; set; }
+        public int tokenExpireTime { get; set; }
+        public string paymentPageUrl { get; set; }
+        public string payWithIyzicoPageUrl { get; set; }
+    }
+
+    public CFResponse cFResponse = new CFResponse();
+    public MarkupString checkoutFormContent = new MarkupString();
+
+    protected override async Task OnInitializedAsync()
+    {
+        cFResponse = await CFStart();
+        checkoutFormContent = new MarkupString(cFResponse.checkoutFormContent);
+    }
+
+    public async Task<CFResponse> CFStart()
+    {
+        BasketItem basketItem = new BasketItem()
+            {
+                id = "BI101",
+                price = "0.3",
+                name = "Binocular",
+                category1 = "Collectibles",
+                itemType = "PHYSICAL"
+            };
+
+        BillingAddress billingAddress = new BillingAddress()
+            {
+                address = "Şirinevler",
+                contactName = "Jane Doe",
+                city = "Istanbul",
+                country = "Turkey"
+            };
+
+        Buyer buyer = new Buyer()
+            {
+                id = "BY789",
+                name = "John",
+                surname = "Doe",
+                identityNumber = "74300864791",
+                email = "email@email.com",
+                gsmNumber = "+905350000000",
+                registrationAddress = "Bakırköy",
+                city = "Istanbul",
+                country = "Turkey",
+                ip = "85.34.78.112"
+            };
+
+        ShippingAddress shippingAddress = new ShippingAddress()
+            {
+                address = "Bakırköy",
+                contactName = "John Doe",
+                city = "Istanbul",
+                country = "Turkey"
+            };
+
+        CFRequest cFRequest = new CFRequest()
+            {
+                locale = "tr",
+                conversationId = "123456789",
+                price = "0.3",
+                basketId = "B67832",
+                paymentGroup = "PRODUCT",
+                buyer = buyer,
+                shippingAddress = shippingAddress,
+                billingAddress = billingAddress,
+                basketItems = new BasketItem[] { basketItem },
+                callbackUrl = "/",
+                currency = "TRY",
+                paidPrice = "1.2",
+                paymentSource = "WEB",
+                enabledInstallments = new int[] { 2, 3 }
+            };
+
+        string jsonData = JsonConvert.SerializeObject(cFRequest);
+        StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+        // API URL
+        string apiUrl = "https://api.iyzipay.com/payment/iyzipos/checkoutform/initialize/auth/ecom";
+
+        // HttpClient nesnesi oluşturun
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                // POST isteği gönderin
+                HttpResponseMessage httpResponse = await client.PostAsync(apiUrl, content);
+                CFResponse response = await httpResponse.Content.ReadFromJsonAsync<CFResponse>();
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+    }
+}

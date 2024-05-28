@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" StartReportEvent="_StartReport" ReportInfo.Created="03/09/2024 18:33:46" ReportInfo.Modified="03/09/2024 19:53:17" ReportInfo.CreatorVersion="2015.1.2.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+    public DataSet GetDataSet(string query)
+    {
+      // SQL Server bağlantı dizesi
+      string connectionString = @&quot;Server=DESKTOP-TUSNPG5\SQL22;Database=DogruolDb;Trusted_Connection=True;&quot;;
+
+      // SqlConnection oluştur
+      using (SqlConnection connection = new SqlConnection(connectionString))
+      {
+        // SqlCommand oluştur
+        using (SqlCommand command = new SqlCommand(query, connection))
+        {
+          // DataTable oluştur
+          DataTable dataTable = new DataTable();
+
+          // DataSet oluştur
+          DataSet dataSet = new DataSet();
+
+          try
+          {
+            // Bağlantıyı aç
+            connection.Open();
+
+            // SqlDataReader oluştur
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+              // SqlDataReader'dan DataTable'e veri aktar
+              dataTable.Load(reader);
+              dataSet.Tables.Add(dataTable);
+              return dataSet;
+            }
+          }
+          catch (Exception ex)
+          {
+            Console.WriteLine(&quot;Hata: &quot; + ex.Message);
+            return dataSet;
+          }
+        }
+      }
+    }    
+
+    private void _StartReport(object sender, EventArgs e)
+    { 
+      DataSet ds = GetDataSet(&quot;select top 1 InventoryName from Erp_Inventory&quot;);
+      string inventoryName = ds.Tables[0].Rows[0][&quot;InventoryName&quot;].ToString();
+      Text2.Text=inventoryName;
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="Table1" ReferenceName="Data.Table1" DataType="System.Int32" Enabled="true">
+      <Column Name="UserName" DataType="System.String"/>
+      <Column Name="EmployeeName" DataType="System.String"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="48">
+      <TextObject Name="Text2" Left="192" Top="9.6" Width="96" Height="19.2" Text="Title"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="50.29" Width="718.2" Height="48">
+      <TextObject Name="Text4" Left="336" Top="9.6" Width="96" Height="19.2" Text="Header"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="100.57" Width="718.2" Height="76.8" DataSource="Table1">
+      <TextObject Name="Text1" Left="28.8" Top="9.6" Width="211.2" Height="57.6" Text="[Table1.UserName]"/>
+      <TextObject Name="Text3" Left="307.2" Top="9.6" Width="211.2" Height="57.6" Text="[Table1.EmployeeName]"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="179.66" Width="718.2" Height="48">
+      <TextObject Name="Text5" Left="307.2" Top="9.6" Width="96" Height="19.2" Text="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

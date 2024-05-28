@@ -1,0 +1,31 @@
+﻿@model List<CoolErp.Controllers.AccountingController.Accounting>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p><a href="Accounting/Add" class="btn btn-success">Yeni Hesap Ekle</a></p>
+
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>Hesap Adı</th>
+        <th>Borç</th>
+        <th>Alacak</th>
+        <th>Bakiye</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+   {
+       <tr>
+           <td>@item.AccountingId</td>
+           <td>@item.HesapAdi</td>
+           <td>@item.Borc</td>
+           <td>@item.Alacak</td>
+           <td>@item.Bakiye</td>
+           <td><a class="btn btn-danger" href="Accounting/Delte/@item.AccountingId">Sil</a></td>
+           <td><a class="btn btn-warning" href="Accounting/Update/@item.AccountingId">Güncelle</a></td>
+       </tr>
+   }
+</table>

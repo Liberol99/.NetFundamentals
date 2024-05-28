@@ -1,0 +1,48 @@
+﻿@model List<EntityLayer.Concrete.Supplier>
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-md-12  d-flex flex-row align-items-center">
+                                    <h2 class="title-1 mb-2 mr-3 ml-2">Tedarikçi Kartı Listesi</h2>
+                                    <a class="btn btn-success mb-2" href="/Supplier/Add">Tedarikçi Ekle</a>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>Company Name</th>
+                                                <th>Contact Name</th>
+                                                <th>Contact Title</th>
+                                                <th class="text-right">Address</th>
+                                                <th class="text-right">City</th>
+                                                <th class="text-right">Region</th>
+                                                <th class="text-right">Postal Code</th>
+                                                <th class="text-right">Tedarikçi Güncelle</th>
+                                                <th class="text-right">Tedarikçi Sil</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(var item in Model){
+                                            <tr>
+                                                <td>@item.CompanyName</td>
+                                                <td>@item.ContactName</td>
+                                                <td>@item.ContactTitle</td>
+                                                <td class="text-right">@item.Address</td>
+                                                <td class="text-right">@item.City</td>
+                                                <td class="text-right">@item.Region</td>
+                                                <td class="text-right">@item.PostalCode</td>
+                                                <td class="text-right"><a class="btn btn-warning" href="/Supplier/Update/@item.SupplierId">Güncelle</a></td>
+                                                <td class="text-right"><a class="btn btn-danger" href="/Supplier/Delete/@item.SupplierId">Sil</a></td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>

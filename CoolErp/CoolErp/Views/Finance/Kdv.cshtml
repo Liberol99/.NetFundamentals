@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Kdv";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="jumbotron" style="background-color:#E5E5E5">
+
+<h2 class="mb-2">KDV Hesaplama</h2>
+<form asp-controller="Finance" asp-action="Kdv" method="get">
+    <input type="text" class="form-control" name="sayi1" id="sayi1" placeholder="Net Tutar"/>
+    <input type="text" class="form-control mt-2" name="sayi2" id="sayi2" placeholder="Vergi Oranı"/>
+    <button class="btn btn-danger mt-2">Hesapla</button>
+</form>
+<h2 class="mt-2">KDV Dahil Tutar: @ViewBag.sonuc</h2>
+</div>

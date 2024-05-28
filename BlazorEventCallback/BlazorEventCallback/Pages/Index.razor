@@ -1,0 +1,33 @@
+﻿@page "/"
+
+@consume
+
+
+@code{
+
+    public string metin = "laylaylom galiba sana göre sevmeler...";
+    public string consume = string.Empty;
+    public string[] strings = new string[50];
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        //Split
+        //verilen ayraca göre metni parçalayrak bir string dizisi döndürür.
+        strings = metin.Split(' ');
+
+        //Trim
+        //metnin sağında ve solunda oluşan boşlukları temizler.
+        consume = metin.Trim();
+        consume = metin.TrimStart();
+        consume = metin.TrimEnd();
+
+        //Substring
+        //verilen indexe göre metnin belirli bir bölümünü alır.
+        //ilk örnek * beşinci indexten başla ve hepsini al.
+        //ikinci örnek * beşinci indexten başla ve 10 karakter al.
+        consume = metin.Substring(5);
+        consume = metin.Substring(5,10);
+    }
+}

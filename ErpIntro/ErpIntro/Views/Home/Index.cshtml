@@ -1,0 +1,36 @@
+﻿@using Newtonsoft.Json;
+@model DataTable
+
+@{
+    ViewData["Title"] = "ANA SAYFA";
+}
+
+@if (Model != null && Model.Rows.Count > 0)
+{
+    foreach (DataRow item in Model.Rows)
+    {
+        <div class="row">
+            <div class="col-6">
+                <p>@item["ProductName"]</p>
+            </div>
+            <div class="col-6">
+                <p>@item["CategoryName"]</p>
+            </div>
+        </div>
+    }
+}
+
+@await Component.InvokeAsync("Categories");
+
+@*@(await Html.RenderComponentAsync<Test>(RenderMode.Server))*@
+
+@*@(await Html.RenderComponentAsync<Test>(
+    RenderMode.Server,
+    new
+    {
+        JsonData = JsonConvert.SerializeObject(Model),
+    }
+))*@
+
+
+@(await Html.RenderComponentAsync<EmployeeCardList>(RenderMode.Server, new { message = ViewData["Title"] }))

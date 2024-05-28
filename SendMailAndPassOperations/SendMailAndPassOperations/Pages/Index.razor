@@ -1,0 +1,102 @@
+﻿@page "/"
+
+@inject ISendMailService SendMailManager
+@inject IConfiguration ConfigurationManager
+
+@if (pageStep == 0)
+{
+    <div class="mb-3">
+        <label for="formMail" class="form-label">E-posta</label>
+        <input type="email" class="form-control" @bind-value=@formMail>
+    </div>
+
+    <div class="mb-3">
+        <label for="formPassword" class="form-label">Şifre</label>
+        <input type="password" class="form-control" @bind-value=@formPassword>
+    </div>
+
+    <button class="btn btn-primary" @onclick=@(()=>{LoginClick();})>Giriş Yap</button>
+    <button class="btn btn-warning mt-2" @onclick=@(()=>{ForgetPassClick();StateHasChanged();})>Şifremi Unuttum</button>
+}
+@if (pageStep == 1)
+{
+    <h1>Hoşgeldiniz...</h1>
+    <h2>@message</h2>
+    <button class="btn btn-danger" @onclick=@(()=>{pageStep=2;StateHasChanged();})>Şifremi Değiştir</button>
+}
+@if (pageStep == 2)
+{
+    <div class="mb-3">
+        <label for="formPassword" class="form-label">Eski Şifre</label>
+        <input type="password" class="form-control" @bind-value=@oldPass1>
+    </div>
+
+    <div class="mb-3">
+        <label for="formPassword" class="form-label">Eski Şifre</label>
+        <input type="password" class="form-control" @bind-value=@oldPass2>
+    </div>
+
+    <div class="mb-3">
+        <label for="formPassword" class="form-label">Yeni Şifre</label>
+        <input type="password" class="form-control" @bind-value=@newPass>
+    </div>
+    <button class="btn btn-success" @onclick=@(()=>{ChangePassClick();})>Şifremi Değiştir</button>
+    <h2>@message</h2>
+    <button class="btn btn-secondary" @onclick=@(()=>{pageStep=0;StateHasChanged();})>Geri Dön</button>
+}
+
+
+@code {
+    public static string formMail = string.Empty;
+    public static string formPassword = string.Empty;
+    public static string message = string.Empty;
+    public static string oldPass1 = string.Empty;
+    public static string oldPass2 = string.Empty;
+    public static string newPass = string.Empty;
+
+    public short pageStep = 0;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    public void LoginClick()
+    {
+        if (!string.IsNullOrEmpty(formMail) && !string.IsNullOrEmpty(formPassword))
+        {
+            if (SendMailManager.CheckUser(formMail, formPassword) > 0) pageStep = 1; StateHasChanged();
+        }
+    }
+
+    public void ForgetPassClick()
+    {
+        if (!string.IsNullOrEmpty(formMail))
+        {
+            SendMailManager.ForgetPassword(formMail, formPassword);
+            message = "Mail Kutunuzu Kontrol Ediniz !";
+        }
+        else
+        {
+            message = "Mail Adresinizi Girin !";
+        }
+    }
+
+    public void ChangePassClick()
+    {
+        if (!string.IsNullOrEmpty(oldPass1) && !string.IsNullOrEmpty(oldPass2) && !string.IsNullOrEmpty(newPass) && oldPass1 == oldPass2)
+        {
+            if (!string.IsNullOrEmpty(formMail)) 
+            { 
+                SendMailManager.ChangePassword(formMail, newPass); 
+                message = "İşlem Başarılı";
+                formMail = string.Empty;
+                StateHasChanged(); 
+            }
+            else
+            {
+                message = "Hatalı Bilgi !";
+            }
+        }
+    }
+}

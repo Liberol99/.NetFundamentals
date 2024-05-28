@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "r3jKioL6sYBy3xLis9CYC6vAl92Yldu0Mn8XbS+uN/aMhRt12K4RfFOhKzaDUSUyMNtfxunJ0LbNYeNXAjzRvA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Orkan\\Documents\\Visual Studio 2022\\Projects\\ManuelCache\\ManuelCache\\ManuelCache.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Orkan\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\Orkan\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Orkan\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\Orkan\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\Orkan\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\Orkan\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

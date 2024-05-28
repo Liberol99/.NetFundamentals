@@ -1,0 +1,48 @@
+﻿@model EntityLayer.Concrete.Bank
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 class="ml-2">@Model.Customer Banka Kartı Güncelle</h1>
+<a class="btn btn-info ml-2 mb-2" href="/Bank/Show">Banka Sayfası</a>
+                                <form asp-controller="Bank" asp-action="Update" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Bank</strong>
+                                        <small> Form</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        
+                                            <div class="form-group">
+                                                <input asp-for="BankId" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="CustomerId" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">Ödeme Miktarını Giriniz</label>
+                                                <input asp-for="PaymentAmount" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">Kart Üzerindeki İsmi Giriniz</label>
+                                                <input asp-for="NameOnCard" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">Kart Numarasını Giriniz</label>
+                                                <input asp-for="CardNumber" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">CVV Giriniz</label>
+                                                <input asp-for="CVV" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">Son Kullanım Tarihini Giriniz</label>
+                                                <input asp-for="Expiration" type="datetime" class="form-control">
+                                            </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary ml-2">Banka Güncelle</button>
+                                </form>

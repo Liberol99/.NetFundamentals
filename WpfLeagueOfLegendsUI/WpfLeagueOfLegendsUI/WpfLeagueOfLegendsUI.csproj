@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Facebook.png" />
+    <None Remove="Resources\Google.png" />
+    <None Remove="Resources\Login.png" />
+    <None Remove="Resources\RiotLogo.png" />
+    <None Remove="Resources\Xbox.png" />
+    <None Remove="Resources\İos.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Facebook.png" />
+    <Resource Include="Resources\Google.png" />
+    <Resource Include="Resources\Login.png" />
+    <Resource Include="Resources\RiotLogo.png" />
+    <Resource Include="Resources\Xbox.png" />
+    <Resource Include="Resources\İos.png" />
+  </ItemGroup>
+
+</Project>

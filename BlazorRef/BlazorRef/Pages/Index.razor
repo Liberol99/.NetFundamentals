@@ -1,0 +1,19 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime
+
+<div class="col-lg-6 mx-auto jumbotron">
+    <form action="#" method="get" >
+        <input type="text" class="form-control" @bind-value=@say1 required/>
+        <input type="text" class="form-control mt-3" @bind-value=@say2  required/>
+        <button class="btn btn-danger mt-3 form-button" @onclick=@(()=>{calculate?.Topla(say1,say2);JSRuntime.InvokeVoidAsync("myFunction");})>Topla</button>
+    </form>
+</div>
+
+<Calculate @ref=@calculate />
+
+@code {
+    public decimal say1 { get; set; }
+    public decimal say2 { get; set; }
+
+    public Calculate? calculate;
+}

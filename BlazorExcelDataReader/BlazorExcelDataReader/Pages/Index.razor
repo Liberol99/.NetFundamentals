@@ -1,0 +1,104 @@
+﻿@page "/"
+@using System.Data;
+@using ExcelDataReader;
+@using System.Dynamic;
+
+<h3>@message</h3>
+
+<InputFile OnChange="HandleFileUpload" />
+
+@if (DataList != null && DataList.Count() > 0)
+{
+    foreach (DataTable item in DataList)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    @foreach (DataColumn column in item.Columns)
+                    {
+                        <th class="text-center">@column.ColumnName</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DataRow row in item.Rows)
+                {
+                    <tr>
+                        @foreach (var items in row.ItemArray)
+                        {
+                            if (items != null)
+                            {
+                                <td class="text-center">@items.ToString()</td>
+                            }
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+@code {
+    public IDictionary<string, object> Model = new ExpandoObject() as IDictionary<string, object>;    
+
+    public string filePath = string.Empty;
+    public string message = string.Empty;
+    public List<DataTable> DataList = new List<DataTable>();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Model["Explanation"] = "";
+        Model["Number"] = "";
+    }
+
+    private void HandleFileUpload(InputFileChangeEventArgs e)
+    {
+        filePath = @"C:\";
+        var file = e.File;
+        if (file != null)
+        {
+            filePath += file.Name;
+            string fileExtension = Path.GetExtension(filePath);
+            if (fileExtension == ".xlsx" || fileExtension == ".xls")
+            {
+                ReadExcelFile();
+                message = string.Empty;
+                StateHasChanged();
+            }
+            else
+            {
+                DataList = new List<DataTable>();
+                message = "Lütfen Excel Türünde Bir Dosyası Seçin !";
+                StateHasChanged();
+            }
+            StateHasChanged();
+        }
+    }
+
+    public virtual void ReadExcelFile()
+    {
+        DataList = new List<DataTable>();
+        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+        using (var streamval = File.Open(filePath, FileMode.Open, FileAccess.Read))
+        {
+            using (var reader = ExcelReaderFactory.CreateReader(streamval))
+            {
+                var dataSet = reader.AsDataSet();
+
+                if (dataSet != null && dataSet.Tables != null && dataSet.Tables.Count > 0)
+                {
+                    foreach (DataTable item in dataSet.Tables)
+                    {
+                        DataList.Add(item);
+                    }
+                }
+                else
+                {
+                    message = "Excel Dosyası Boş !";
+                }
+            }
+        }
+    }
+
+}

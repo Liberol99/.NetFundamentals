@@ -1,0 +1,17 @@
+﻿@model CoolBlog.Models.Category
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        <a asp-area="Admin" asp-controller="AdminCategory" asp-action="Index" class="btn btn-success mt-2 mb-2">Geri Dön</a>
+        <form asp-area="Admin" asp-controller="AdminCategory" asp-action="Update" method="post" >
+            <input class="form-control" type="hidden" name="CategoryId" asp-for="CategoryId"/>
+            <input class="form-control" type="text"  name="CategoryName" asp-for="CategoryName"/>
+            <input class="form-control mt-2" type="text"  name="CategoryDescription" asp-for="CategoryDescription"/>
+            <button class="btn btn-primary mt-2">Güncelle</button>
+        </form>
+    </div>
+</div>

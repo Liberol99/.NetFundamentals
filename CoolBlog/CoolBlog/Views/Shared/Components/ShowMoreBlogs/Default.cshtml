@@ -1,0 +1,32 @@
+﻿@model List<Blog>
+<div class="col-md-12">
+
+                @foreach (var item in Model)
+               {
+                   <div class="post-entry-horzontal">
+                  <a asp-controller="Category" asp-action="Index" asp-route-id="@item.BlogId">
+                    <div class="image element-animate"  data-animate-effect="fadeIn" style="background-image:url(@item.BlogImage)"></div>
+                    <span class="text">
+                      <div class="post-meta">
+                        <span class="category">@item.Category.CategoryName</span>
+                        <span class="mr-2">@item.BlogCreateDate.ToString().Substring(0,10)</span> &bullet;
+                        <span class="ml-2"><span class="fa fa-comments"></span></span>
+                      </div>
+                      <h2>@item.BlogTitle</h2>
+                    </span>
+                  </a>
+                </div>
+               }
+                <!-- END post -->
+
+                
+                <!-- END post -->
+                
+
+                
+                <!-- END post -->
+
+                
+
+
+              </div>

@@ -1,0 +1,90 @@
+﻿@model (List<EntityLayer.Concrete.Shipper>,List<EntityLayer.Concrete.Product>)
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- USER DATA-->
+                                <div class="user-data m-b-40">
+                                    <h3 class="title-3 m-b-30">
+                                        <i class="fa fa-truck mr-1" aria-hidden="true"> Kargo Yönetimi</i></h3>
+                                    <div class="filters m-b-45">
+                                        <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+                                            <select class="js-select2" name="property">
+                                                <option selected="selected">All Properties</option>
+                                                <option value="">Products</option>
+                                                <option value="">Services</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                            <select class="js-select2 au-select-dark" name="time">
+                                                <option selected="selected">All Time</option>
+                                                <option value="">By Month</option>
+                                                <option value="">By Day</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive table-data">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    @*<td>
+                                                        <label class="au-checkbox">
+                                                            <input type="checkbox">
+                                                            <span class="au-checkmark"></span>
+                                                        </label>
+                                                    </td>*@
+                                                    <td>Kargo Firması</td>
+                                                    <td></td>
+                                                    <td>Ürünler</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.Item1)
+                                               {
+                                                  <form asp-controller="Cargo" asp-action="Show" method="get">
+                                                      <tr>
+                                                    <td>
+                                                    
+                                                       <div class="table-data__info">
+                                                            <input name="string1" id="string1" type="text"  value="@item.CompanyName" class="form-control">
+                                                            <span>
+                                                                <a href="#">@item.CompanyName .com</a>
+                                                            </span>
+                                                        </div>
+                                                   
+                                                   </td>
+                                                    <td>
+                                                        <button class="btn btn-primary">Hazırla</button>
+                                                    </td>
+                                                    <td>   
+                                                           <div class="rs-select2--trans rs-select2--sm">
+                                                                
+                                                                    <select class="js-select2" name="sayi1" id="sayi1">
+                                                                    <option selected="selected">Ürün Seç</option>
+                                                               @foreach (var item2 in Model.Item2)
+                                                                {
+                                                                    <option value="@item2.ProductId">@item2.ProductName</option>
+                                                                }    
+                                                                    </select>
+                                                                
+                                                            <div class="dropDownSelect2"></div>
+                                                           </div>
+                                                    </td>
+                                                    
+                                                </tr>
+                                                  </form> 
+                                               }
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="user-data__footer">
+                                        <a class="btn btn-secondary" asp-controller="Barcode" asp-action="Show">Barkod Yazdır</a>
+                                    </div>
+                                </div>
+                                <!-- END USER DATA-->

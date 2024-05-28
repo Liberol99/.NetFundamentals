@@ -1,0 +1,29 @@
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\bin\Debug\FastReportCSharp.exe.config
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\bin\Debug\FastReportCSharp.exe
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\bin\Debug\FastReportCSharp.pdb
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.csprojAssemblyReference.cache
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.Properties.Resources.resources
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.csproj.GenerateResource.cache
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.csproj.CoreCompileInputs.cache
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.exe
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.pdb
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\bin\Debug\FastReport.Bars.dll
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\bin\Debug\FastReport.dll
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\bin\Debug\FastReport.Editor.dll
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\bin\Debug\MySql.Data.dll
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.Form1.resources
+C:\Users\amony\source\repos\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.csproj.CopyComplete
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\bin\Debug\FastReportCSharp.exe.config
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\bin\Debug\FastReportCSharp.exe
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\bin\Debug\FastReportCSharp.pdb
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\bin\Debug\FastReport.Bars.dll
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\bin\Debug\FastReport.dll
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\bin\Debug\FastReport.Editor.dll
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.csproj.AssemblyReference.cache
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.Form1.resources
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.Properties.Resources.resources
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.csproj.GenerateResource.cache
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.csproj.CoreCompileInputs.cache
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.csproj.CopyComplete
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.exe
+C:\Users\Orkan\Documents\Visual Studio 2022\Projects\FastReportCSharp\FastReportCSharp\obj\Debug\FastReportCSharp.pdb

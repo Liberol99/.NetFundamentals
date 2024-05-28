@@ -1,0 +1,82 @@
+﻿@page "/"
+
+<div class="container">
+    <div class="row w-100 p-0 m-0">
+        <div class="col-lg-6 mx-auto mt-5 d-flex flex-row justify-content-center" style="gap:10px!important;">
+            <div>
+                @if (modules != null && modules.Count() > 0)
+                {
+                    foreach (var item in modules)
+                    {
+                        <div class="d-flex" style="gap:10px!important;">
+                            <input type="checkbox" @onchange=@(()=>{ModuleHandler(Convert.ToInt16(item["RecId"]));}) />
+                            <p class="mb-0">@item["Module"]</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>Yükleniyor...</p>
+                }
+            </div>
+            <ul>
+                @if (selectedModules != null && selectedModules.Count() > 0)
+                {
+                    foreach (var item in selectedModules)
+                    {
+                        if (!string.IsNullOrEmpty(item["Module"].ToString()))
+                        {
+                            <li>
+
+                                <p>@item["Module"]</p>
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+@code {
+    public List<Dictionary<string, object>> modules = new List<Dictionary<string, object>>();
+    public List<Dictionary<string, object>> selectedModules = new List<Dictionary<string, object>>();
+
+    protected override void OnInitialized()
+    {
+        modules = new List<Dictionary<string, object>>();
+        Dictionary<string, object> module = new Dictionary<string, object>();
+        module.Add("RecId", 1);
+        module.Add("Module", "Vogue");
+        Dictionary<string, object> module2 = new Dictionary<string, object>();
+        module2.Add("RecId", 2);
+        module2.Add("Module", "Live");
+        Dictionary<string, object> module3 = new Dictionary<string, object>();
+        module3.Add("RecId", 3);
+        module3.Add("Module", "Fabric");
+        modules.Add(module);
+        modules.Add(module2);
+        modules.Add(module3);
+
+        selectedModules = new List<Dictionary<string, object>>();
+        Dictionary<string, object> empty = new Dictionary<string, object>();
+        empty.Add("RecId", 0);
+        empty.Add("Module", "");
+        selectedModules.Add(empty);
+    }
+
+    public void ModuleHandler(short recId)
+    {
+        Dictionary<string, object> module = modules.First(x => Convert.ToInt16(x["RecId"]) == recId);
+        bool isOk = selectedModules.Any(x => Convert.ToInt16(x["RecId"]) == recId);
+        if (!isOk)
+        {
+            selectedModules.Add(module);
+        }
+        else
+        {
+            selectedModules.Remove(module);
+        }
+        StateHasChanged();
+    }
+}

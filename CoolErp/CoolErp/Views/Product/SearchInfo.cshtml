@@ -1,0 +1,22 @@
+﻿@model List<EntityLayer.Concrete.Product>
+@{
+    ViewData["Title"] = "SearchInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>Ürün</th>
+        <th>Stok</th>
+        <th>Birim Fiyatı</th>
+    </tr>
+    @foreach (var item in Model)
+   {
+       <tr>
+           <td>@item.ProductName</td>
+           <td>@item.UnitsInStock</td>
+           <td>@item.UnitPrice</td>
+       </tr>
+   }
+</table>
+

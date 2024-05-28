@@ -1,0 +1,34 @@
+﻿@model EntityLayer.Concrete.Employee
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background-color:#E5E5E5">
+<div class="login-form">
+                            <form asp-controller="Account" asp-action="Register" method="post">
+                                <div class="form-group">
+                                    <label>Adınız</label>
+                                    <input class="form-control" type="text" name="FirstName" id="FirstName">
+                                    <span asp-validation-for="FirstName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Soyadınız</label>
+                                    <input class="form-control" type="text" name="LastName" id="LastName">
+                                    <span asp-validation-for="LastName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mail Adresi</label>
+                                    <input class="form-control" type="email" name="Mail" id="Mail">
+                                    <span asp-validation-for="Mail"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Şifre</label>
+                                    <input class="form-control" type="password" name="Password" id="Password">
+                                    <span asp-validation-for="Password"></span>
+                                </div>
+                                <h2 class="mt-2" style="color:#007BFF">@ViewBag.mesaj</h2>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20 mt-2" type="submit">Kayıt Ol</button>
+                            </form>
+                        </div>
+</div>

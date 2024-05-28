@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Product
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="jumbotron" style="background-color:#E5E5E5">
+
+<div class="">
+    <div class="alert" style="background-color:#4272D7" role="alert">
+    <h1 class="text-white">Firma Adı</h1>
+    <p class="text-white">@ViewBag.shipperName <i class="fa fa-truck" aria-hidden="true"></i></p>
+    </div>
+
+    
+    <div class="alert" style="background-color:#4272D7" role="alert">
+    <h1 class="text-white">Ürün Adı</h1>
+    <div class="d-flex flex-row justify-content-between">
+        <p class="text-white">@Model.ProductName</p>
+        <p class="text-white">Kalan Stok : @Model.UnitsInStock</pclass>
+    </div>
+    </div>
+
+    
+    <div class="alert" style="background-color:#4272D7" role="alert">
+    <h1 class="text-white">Adres Girin</h1>
+    <textarea class="form-control" style="min-height:150px!important">
+    </textarea>
+    </div>
+
+    <a asp-controller="Cargo" asp-action="Index" class="btn btn-success mt-2">Gönder</a>
+
+</div>
+</div>

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "QbE2ja6j+Zd58ITAVoo5ZZe1Pw2miSlh3mk0Pdn/i/e/avOjv6Ka5lvaIBisEts+zhh+A+fW4AjkxEhhxs+2Yg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Shelby\\Documents\\MvcProjeler\\CoolErp\\EntityLayer\\EntityLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Shelby\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Shelby\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Shelby\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

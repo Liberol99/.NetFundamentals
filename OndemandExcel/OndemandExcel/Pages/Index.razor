@@ -1,0 +1,73 @@
+﻿@page "/"
+@using OndemandExcel.Services.Interfaces;
+@using System.Dynamic;
+
+@inject IGetData GetData
+
+<h3 class="text-danger font-weight-bold">Excel dosyasını Yerel Disk C içine atın daha sonra seçin</h3>
+
+<InputFile OnChange=HandleFileSelected />
+
+@if (expList != null && expList.Count() > 0)
+{
+    <table class="table table-striped my-2">
+        <tbody>
+            @foreach (var item in expList)
+            {
+                var itemW = item as IDictionary<string, object>;
+                <tr>
+                    @if (itemW != null && itemW.ContainsKey("value1") && itemW["value1"] != null && !string.IsNullOrEmpty(itemW["value1"].ToString()))
+                    {
+                        <td>@itemW["value1"].ToString()</td>
+                    }
+                    @if (itemW != null && itemW.ContainsKey("value2") && itemW["value2"] != null && !string.IsNullOrEmpty(itemW["value2"].ToString()))
+                    {
+                        <td>@itemW["value2"].ToString()</td>
+                    }
+                    @if (itemW != null && itemW.ContainsKey("value3") && itemW["value3"] != null && !string.IsNullOrEmpty(itemW["value3"].ToString()))
+                    {
+                        <td>@itemW["value3"].ToString()</td>
+                    }
+                    @if (itemW != null && itemW.ContainsKey("value4") && itemW["value4"] != null && !string.IsNullOrEmpty(itemW["value4"].ToString()))
+                    {
+                        <td>@itemW["value4"].ToString()</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <h3 class="text-danger font-weight-bold my-2">@message</h3>
+}
+
+@code {
+
+    public List<ExpandoObject> expList = new List<ExpandoObject>();
+    public string filepath = string.Empty;
+    public string message = string.Empty;
+
+    public void HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+
+        if (file != null)
+        {
+            filepath = file.Name;
+            string fileExtension = Path.GetExtension(filepath);
+            if (fileExtension == ".xlsx" || fileExtension == ".xls" || fileExtension == ".csv" || fileExtension == ".xlsm" || fileExtension == ".xlsb" || fileExtension == ".ods")
+            {
+                expList = GetData.GetData(filepath);
+                StateHasChanged();
+            }
+            else
+            {
+                expList = null;
+                message = "Lütfen Excel Dosyası Seçin !";
+                StateHasChanged();
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+﻿@using BusinessLayer.AdoNet;
+@using EntityLayer.Concrete;
+@using Newtonsoft.Json;
+@using Radzen.Blazor
+@using Radzen
+@using System.Data;
+@using System.Dynamic;
+
+@inject IAdoService _adoService;
+
+@message
+
+@if (Data != null && Data.Count() > 0)
+{
+    <RadzenGrid TItem="Model" Data="@Data" FilterCaseSensitivity="Radzen.FilterCaseSensitivity.CaseInsensitive" ColumnWidth="150px" AllowPaging="true" AllowSorting="true" AllowFiltering="true" PageSize="10">
+        <Columns>
+            <RadzenGridColumn TItem="Model" Property="FirstName" Title="FirstName" />
+            <RadzenGridColumn TItem="Model" Property="LastName" Title="LastName" />
+        </Columns>
+    </RadzenGrid>
+}
+
+@code {
+    public IEnumerable<Model> Data { get; set; } = new List<Model>();
+    [Parameter] public string message { get; set; } = string.Empty;
+
+    public class Model
+    {
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        string query = "select * from Employees";
+        DataTable dTable = _adoService.SelectQuery(query);
+        // DataTable'dan IEnumerable<Model> tipindeki Data koleksiyonunu doldur
+        Data = ConvertDataTableToList(dTable);
+    }
+
+    private IEnumerable<Model> ConvertDataTableToList(DataTable table)
+    {
+        List<Model> modelList = new List<Model>();
+
+        foreach (DataRow row in table.Rows)
+        {
+            Model model = new Model
+                {
+                    FirstName = row["FirstName"].ToString(),
+                    LastName = row["LastName"].ToString()
+                };
+
+            modelList.Add(model);
+        }
+
+        return modelList;
+    }
+}

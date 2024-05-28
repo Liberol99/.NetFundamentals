@@ -1,0 +1,50 @@
+﻿@model (List<EntityLayer.Concrete.Bank>,List<EntityLayer.Concrete.Customer>)
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 class="ml-2">Banka Ekle</h1>
+
+<form asp-controller="Bank" asp-action="Add" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Bank</strong>
+                                        <small> Form</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-group">
+                                         <select class="form-control" name="CustomerId">
+                                             <option selected>Müşteri Seçiniz</option>
+                                             @foreach (var item in Model.Item2)
+                                             {
+                                                 <option value="@item.CustomerId">
+                                                     @item.CompanyName
+                                                 </option>
+                                             }
+                                         </select>
+                                         </div>
+                                         <div class="form-group">
+                                            <input name="PaymentAmount" type="text" placeholder="PaymentAmount Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="NameOnCard" type="text" placeholder="Kart Üzerindeki Adı Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="CardNumber" type="text" placeholder="Kart Numarasını Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="CVV" type="text" placeholder="CVV Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="Expiration" type="text" placeholder="Son Kullanma Tarihini Giriniz" class="form-control">
+                                        </div>
+                                        
+
+                                        
+                                    </div>
+                                </div>
+                                <button class="btn btn-success ml-2">Ekle</button>
+                                </form>

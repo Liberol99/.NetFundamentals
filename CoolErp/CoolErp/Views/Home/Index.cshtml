@@ -1,0 +1,111 @@
+﻿@model EntityLayer.Concrete.Employee
+@{
+    ViewBag.FirstName = Model.FirstName;
+    ViewBag.LastName = Model.LastName;
+    ViewBag.Mail = Model.Mail;
+    ViewBag.Image = Model.Image;
+    ViewBag.EmployeeId = Model.EmployeeId;
+    //Layout'a veri gönderiliyor...
+}
+<div class="section__content section__content--p30">
+                    <div class="container-fluid">
+<a class="weatherwidget-io" href="https://forecast7.com/en/41d0128d98/istanbul/" data-label_1="İSTANBUL" data-label_2="WEATHER" data-theme="pure" data-basecolor="#E5E5E5" data-shadow="#d5d5d5" data-textcolor="#363636" >İSTANBUL WEATHER</a>                            <div class="col-md-12">
+                                <div class="overview-wrap mb-5">
+                                   @* <h2 class="title-1">Çalışan Bilgi</h2>*@
+                                </div>
+                    </div>
+                        <div class="row mt-5 m-t-25">
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-account-o"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>@Model.BirthDate.ToString().Substring(0,10)</h2>
+                                                <span>Dogum Tarihi</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart1"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4"  >
+                                <div class="overview-item overview-item--c3">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix d-flex">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-calendar-note"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2 style="font-size:16px">@Model.Address</h2>
+                                                <span >Adres</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart3"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="overview-item overview-item--c4">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-money"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2 class="text-white">$@Model.Salary</h2>
+                                                <span>Maaş</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart4"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5 justify-content-between">
+                        @*@await Component.InvokeAsync("ChartCount")*@
+
+                        
+                        @await Component.InvokeAsync("ShowOrderListWithEmployee")
+                        @await Component.InvokeAsync("ShowCurrency")
+                        </div>
+                            
+                            
+
+
+                            
+
+
+
+                        </div>
+                        
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @await Component.InvokeAsync("ShowProducts")
+                                </div>
+                            </div>
+                           @* <div class="row">
+                                    @await Component.InvokeAsync("ShowCurrency")
+                            </div>*@
+                        <div class="row">
+                            @await Component.InvokeAsync("ShowToDo",new {id=ViewBag.empId})
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>@DateTime.Now.Year Sentez Yazılım</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

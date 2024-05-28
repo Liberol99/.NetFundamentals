@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5AekqiZedYOee0B93r/t4B40TX+Tn/paYvRiPGKh4AQ1wwNC1ilTdnKpy1j4TnTY5C3ReDLPbTDADPEXbUQqBA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Orkan\\Documents\\Visual Studio 2022\\Projects\\BlazorJavaScript\\BlazorJavaScript\\BlazorJavaScript.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Orkan\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

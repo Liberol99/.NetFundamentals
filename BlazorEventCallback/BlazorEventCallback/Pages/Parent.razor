@@ -1,0 +1,19 @@
+﻿@page "/Parent"
+
+@message
+<br />
+
+<Child SayHi="ChildSayHi" />
+
+@code {
+
+    public string message = string.Empty;
+
+    public void ChildSayHi(string value)
+    {
+        //message = "Hi !";
+        message = value;
+        StateHasChanged();
+    }
+
+}

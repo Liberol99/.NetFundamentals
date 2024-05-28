@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1 class="ml-2">Çalışan Ekle</h1>
+
+<form asp-controller="Employee" asp-action="Add" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Çalışan</strong>
+                                        <small> Form</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-group">
+                                            <input name="FirstName" type="text" placeholder="Çalışan Adını Giriniz" class="form-control">
+                                        </div>
+                                         <div class="form-group">
+                                            <input name="LastName" type="text" placeholder="Çalışan Soyadını Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="Mail" type="email" placeholder="Çalışan Mail'i Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="Password" type="password" placeholder="Çalışan Şifresini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="Image" type="text" placeholder="Çalışan Fotoğraf Adresini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="Title" type="text" placeholder="Çalışan Başlığını Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="BirthDate" type="datetime" placeholder="Çalışan Doğum Tarihini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="HireDate" type="datetime" placeholder="Çalışan İşe Giriş Tarihini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="Address" class="form-control" placeholder="Çalışan Adresini Giriniz"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="City" type="text" placeholder="Çalışan Şehrini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="Region" type="text" placeholder="Çalışan Ülkesini Giriniz" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-success ml-2">Ekle</button>
+                                </form>

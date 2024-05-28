@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background-color:#E5E5E5">
+<form asp-controller="Accounting" asp-action="Add" method="post">
+    <input class="form-control" type="text" name="HesapAdi" placeholder="Hesap Adı Girin"/>
+    <input class="form-control mt-2" type="text" name="Borc" placeholder="Borc Girin"/>
+    <input class="form-control mt-2" type="text" name="Alacak" placeholder="Alacak Adı Girin"/>
+    <button class="btn btn-success mt-2">Ekle</button>
+</form>
+</div>

@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.Shipper
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 class="ml-2">@Model.CompanyName Güncelle</h1>
+<a class="btn btn-info ml-2" href="/Shipper/Show">Kargo Sayfası</a>
+                                <form asp-controller="Shipper" asp-action="Update" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Kargo</strong>
+                                        <small> Form</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                            <div class="form-group">
+                                                <input asp-for="ShipperId" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">Şirket Adını Giriniz</label>
+                                                <input asp-for="CompanyName" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">Telefon Numarasını Giriniz</label>
+                                                <input asp-for="Phone" type="text" class="form-control">
+                                            </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary ml-2">Kargo Güncelle</button>
+                                </form>

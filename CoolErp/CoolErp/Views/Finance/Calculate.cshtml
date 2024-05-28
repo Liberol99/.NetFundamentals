@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concrete.Product
+@{
+    ViewData["Title"] = "Calculate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-controller="Finance" asp-action="Calculate" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Oran</strong>
+                                        <small> Hesabı</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-group">
+                                            <input asp-for="ProductName" type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Birim Alış Fiyatı</label>
+                                            <input asp-for="UnitsOnOrder" type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Birim Satış Fiyatı</label>
+                                            <input asp-for="UnitPrice" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-success ml-2">Hesapla</button>
+                                </form>
+                                @await Component.InvokeAsync("ShowProfit",new {sonuc=ViewBag.sonuc})
+                               

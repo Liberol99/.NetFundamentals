@@ -1,0 +1,25 @@
+﻿@model List<EntityLayer.Concrete.Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="jumbotron" style="background-color:#E5E5E5">
+  <form asp-controller="Sales" asp-action="Index" method="get">
+      <select class="form-control" name="sayi1" id="sayi1">
+          @foreach (var item in Model)
+         {
+             <option value="@item.ProductId">@item.ProductName</option>
+         }
+      </select>
+
+      <input class="form-control mt-2" type="text" name="sayi2" id="sayi2" placeholder="Satış Miktarı"/>
+
+      <button class="btn btn-danger mt-2">Satış Yap</button>
+  </form>
+  <hr class="my-4">
+  <h2>@ViewBag.ad<br /> Kalan Stok Adeti : @ViewBag.kalan</h2>
+  <h2>KDV Dahil Fiyat : @ViewBag.kdv</h2>
+</div>

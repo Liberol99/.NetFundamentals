@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Interest2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="jumbotron" style="background-color:#E5E5E5">
+
+<h2 class="mb-2">Faiz Hesapla</h2>
+
+<form asp-controller="Finance" asp-action="Interest2" method="get">
+    <input class="form-control" type="text" name="sayi1" id="sayi1" placeholder="Anapara" />
+    <input class="form-control mt-2" type="text" name="sayi2" id="sayi2" placeholder="Faiz Oranı" />
+    <input class="form-control mt-2" type="text" name="sayi3" id="sayi3" placeholder="Ay Sayısı" />
+    <button class="btn btn-danger mt-2">Hesapla</button>
+</form>
+
+<h2 class="mt-2">Aylık Faiz Getirisi: @ViewBag.sonuc</h2>
+</div>

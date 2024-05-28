@@ -1,0 +1,37 @@
+﻿@model CoolErp.Models.Financial
+@{
+    ViewData["Title"] = "Index2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" style="background-color:#E5E5E5">
+<div class="row">
+    <div class="col-md-6">
+        <form  asp-controller="Finance" asp-action="Index2" method="get">
+        <input class="form-control" type="text" name="sayi1" id="sayi1" placeholder="Personel Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi2" id="sayi2" placeholder="Reklam Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi3" id="sayi3" placeholder="Elektrik Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi4" id="sayi4" placeholder="Su Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi5" id="sayi5" placeholder="Doğal Gaz Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi6" id="sayi6" placeholder="Kira Gaz Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi7" id="sayi7" placeholder="Gıda Gaz Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi8" id="sayi8" placeholder="Kargo Gaz Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi9" id="sayi9" placeholder="Market Gaz Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi10" id="sayi10" placeholder="Yakıt Gaz Gideri" />
+        <input class="form-control mt-2" type="text" name="sayi11" id="sayi11" placeholder="Satış Geliri" />
+        <input class="form-control mt-2" type="text" name="sayi12" id="sayi12" placeholder="Sponsor Geliri" />
+        <input class="form-control mt-2" type="text" name="sayi13" id="sayi13" placeholder="Sosyal Medya Geliri" />
+        <button class="btn btn-danger mt-2">Hesapla</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Pasta Grafiği</h3>
+                                        <canvas id="pieChart2"></canvas>
+                </div>
+            </div>
+            <h1>Fark : @ViewBag.fark</h1>
+    </div>
+</div>
+</div>

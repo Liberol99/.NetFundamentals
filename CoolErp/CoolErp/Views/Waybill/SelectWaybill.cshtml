@@ -1,0 +1,17 @@
+﻿@model List<EntityLayer.Concrete.Product>
+@{
+    ViewData["Title"] = "SelectWaybill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ürün Yazdır</h2>
+<form asp-controller="Waybill" asp-action="ShowWaybill" method="get">
+    <select class="form-control" name="sayi1" id="sayi1">
+    @foreach (var item in Model)
+    {
+        <option value="@item.ProductId">@item.ProductName</option>
+    }
+    </select>
+   <input class="form-control" type="text" id="sayi2" name="sayi2" placeholder="Satış Adet" />
+   <button class="btn btn-danger mt-2">Yazdır</button>
+</form>

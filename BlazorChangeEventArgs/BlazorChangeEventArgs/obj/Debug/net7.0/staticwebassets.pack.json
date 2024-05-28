@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Orkan\\Documents\\Visual Studio 2022\\Projects\\BlazorChangeEventArgs\\BlazorChangeEventArgs\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\Orkan\\Documents\\Visual Studio 2022\\Projects\\BlazorChangeEventArgs\\BlazorChangeEventArgs\\obj\\Debug\\net7.0\\build-gz\\6m5A0dzA.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\Orkan\\Documents\\Visual Studio 2022\\Projects\\BlazorChangeEventArgs\\BlazorChangeEventArgs\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Orkan\\Documents\\Visual Studio 2022\\Projects\\BlazorChangeEventArgs\\BlazorChangeEventArgs\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BlazorChangeEventArgs.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.BlazorChangeEventArgs.props",
+      "PackagePath": "build\\BlazorChangeEventArgs.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorChangeEventArgs.props",
+      "PackagePath": "buildMultiTargeting\\BlazorChangeEventArgs.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.BlazorChangeEventArgs.props",
+      "PackagePath": "buildTransitive\\BlazorChangeEventArgs.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,35 @@
+﻿@model List<EntityLayer.Concrete.Product>
+@{
+    ViewData["Title"] = "StockManagement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- TOP CAMPAIGN-->
+                                <div class="top-campaign">
+                                    <h3 class="title-3 m-b-30">Ürünler</h3>
+                                    <div class="table-responsive">
+                                        <table class="table table-top-campaign">
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                               {
+                                                <tr>
+                                                    <td>@item.ProductName</td>
+                                                    <td>@item.UnitsInStock</td>
+                                                    <form asp-action="StockManagement" asp-controller="Finance" method="get">
+                                                    <td>
+                                                            @if(item.UnitsInStock<100){
+                                                                <span class="text-danger">Stok Azalıyor !!!</span>
+                                                            }
+                                                            <input asp-for="@item.UnitsInStock" name="sayi1" id="sayi1" class="form-control" type="text" value="@item.UnitsInStock" placeholder="Yeni Stok Sayısı" />
+                                                            <input asp-for="@item.ProductId" name="sayi2" id="sayi2" class="form-control" type="hidden" />
+                                                            <button class="btn btn-sm btn-success mt-2">Güncelle</button>
+                                                    </td>
+                                                    </form>
+                                                </tr>
+                                               }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+<!--  END TOP CAMPAIGN-->

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 class="ml-2">Müşteri Ekle</h1>
+
+<form asp-controller="Customer" asp-action="Add" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Müşteri</strong>
+                                        <small> Form</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-group">
+                                            <input name="CompanyName" type="text" placeholder="Şirket Adını Giriniz" class="form-control">
+                                        </div>
+                                         <div class="form-group">
+                                            <input name="ContactName" type="text" placeholder="İletişim Adını Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="ContactTitle" type="text" placeholder="İletişim Başlığını Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="Address" class="form-control" placeholder="Müşteri Adresini Giriniz"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="City" type="text" placeholder="Müşteri Şehrini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="Region" type="text" placeholder="Müşteri Ülkesini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="PostalCode" type="text" placeholder="Müşteri Posta Kodunu Giriniz" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-success ml-2">Ekle</button>
+                                </form>

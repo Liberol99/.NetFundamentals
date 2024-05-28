@@ -1,0 +1,31 @@
+﻿@model List<CoolBlog.Models.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row justify-content-center mt-5">
+<div class="col-md-9">
+        
+<a class="btn btn-success mb-2" asp-area="Admin" asp-controller="AdminCategory" asp-action="Add">Kategori Ekle</a>
+<a class="btn btn-secondary mb-2"  href="/Home/Index">Sentez Home</a>
+<table class="table">
+    <tr>
+        <th>CategoryId</th>
+        <th>CategoryName</th>
+        <th>CategoryDescription</th>
+        <th>Kategori Sil</th>
+        <th>Kategori Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+   {
+       <tr>
+           <td>@item.CategoryId</td>
+           <td>@item.CategoryName</td>
+           <td>@item.CategoryDescription</td>
+           <td><a class="btn btn-danger" asp-area="Admin" asp-controller="AdminCategory" asp-action="Delete" asp-route-id="@item.CategoryId">Sil</a></td>
+           <td><a class="btn btn-primary" asp-area="Admin" asp-controller="AdminCategory" asp-action="Update" asp-route-id="@item.CategoryId">Güncelle</a></td>
+       </tr>
+   }
+</table>
+</div>
+</div>

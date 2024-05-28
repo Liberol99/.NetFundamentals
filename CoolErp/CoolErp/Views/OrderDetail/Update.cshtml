@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.OrderDetail
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 class="ml-2">İş Detay Güncelle</h1>
+<a class="btn btn-info ml-2 mb-2" href="/OrderDetail/Show">İş Detayı Sayfası</a>
+                                <form asp-controller="OrderDetail" asp-action="Update" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>İş Detayı</strong>
+                                        <small> Form</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        
+                                            <div class="form-group">
+                                                <input asp-for="OrderDetailId" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="OrderId" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input asp-for="ProductId" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">İş Fiyatını Giriniz</label>
+                                                <input asp-for="UnitPrice" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">İş Miktarını Giriniz</label>
+                                                <input asp-for="Quantity" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">İş İndirimini Giriniz</label>
+                                                <input asp-for="Discount" type="text" class="form-control">
+                                            </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary ml-2">İş Detayı Güncelle</button>
+                                </form>

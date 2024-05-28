@@ -1,0 +1,59 @@
+﻿@model (List<EntityLayer.Concrete.Supplier>,List<EntityLayer.Concrete.Category>)
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="ml-2">Ürün Ekle</h1>
+
+                                            <form asp-controller="Product" asp-action="Add" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Ürün</strong>
+                                        <small> Form</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-group">
+                                            <input name="ProductName" type="text" placeholder="Ürün Adını Giriniz" class="form-control">
+                                        </div>
+                                         <div class="form-group">
+                                         <select class="form-control" name="SupplierId">
+                                             <option selected>Şirket Seçiniz</option>
+                                             @foreach (var item in Model.Item1)
+                                             {
+                                                 <option value="@item.SupplierId">
+                                                     @item.CompanyName
+                                                 </option>
+                                             }
+                                         </select>
+                                         </div>
+                                         <div class="form-group">
+                                         <select class="form-control" name="CategoryId">
+                                             <option selected>Kategori Seçiniz</option>
+                                             @foreach (var item in Model.Item2)
+                                             {
+                                                 <option value="@item.CategoryId">
+                                                     @item.CategoryName
+                                                 </option>
+                                             }
+                                         </select>
+                                         </div>
+                                         <div class="form-group">
+                                            <input name="QuantityPerUnit" type="hidden" placeholder="Ürün Başı Miktarını Giriniz" class="form-control">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <input name="UnitPrice" type="text" placeholder="Ürün Fiyatını Giriniz" class="form-control">
+                                        </div>
+                                         <div class="form-group">
+                                            <input name="UnitsInStock" type="text" placeholder="Ürün Stok Adetini Giriniz" class="form-control">
+                                        </div><div class="form-group">
+                                            <input name="UnitsOnOrder" type="hidden" placeholder="Ürün Sıra Adetini Giriniz" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="UnitsInCost" type="hidden" placeholder="Ürün Maliyetini Giriniz" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-success ml-2">Ekle</button>
+                                </form>
